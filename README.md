@@ -2,17 +2,22 @@
 
 onfido-php is a PHP API client for Onfido's REST API.
 
-# Modifications
+# PartFire Modifications
 
 We have kept this library as close to the original as possible and so can be used as the [documentation](https://onfido.com/documentation#documents) states.
+
 Im order to run the tests, you must update the AbstractTest file with your api token.  The tests are not very good as they depend upon data on your Onfido account (e.g. customer ids).
-These are the tests that Onfido provides.
+These are the original unit tests that Onfido provided.
 
 # Installation
 
 You can obtain onfido-php from source
 
     $ git clone https://github.com/onfido/php-onfido.git
+    
+or you can install via composer:
+
+    $ composer require partfire/onfido
 
 # Usage
 
