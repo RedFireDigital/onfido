@@ -21,14 +21,3 @@ class Check
     }
 
 }
-
-class CheckReport
-{
-    public $name, $variant, $options;
-}
-
-class CheckReportOption
-{
-    public $name, $options;
-}
-
