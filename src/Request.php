@@ -99,22 +99,23 @@ class Request
 
     private function processResponse($response)
     {
+        //var_dump("Response is");
+        //var_dump($response);
+
         if ($response === false)
             return 'cURL Error: ' . curl_error($this->curlHandle);
 
-        $httpError = curl_getinfo($this->curlHandle, CURLINFO_HTTP_CODE);
-        if (strpos($httpError, '2') !== 0)
-            return 'HTTP Error #' . $httpError . ' with Response: ' . $response;
+        $httpCode = curl_getinfo($this->curlHandle, CURLINFO_HTTP_CODE);
+        //if (strpos($httpCode, '2') !== 0)
+            //return 'HTTP Error #' . $httpError . ' with Response: ' . $response;
 
         try {
-            $data = json_decode($response);
-
-            if (isset($data->error))
-                $this->error($data->error);
+            $data = json_decode($response, true);
+            $data['httpCode'] = $httpCode;
 
             return $data;
         } catch (Execption $e) {
-            $this->error("Couldn't parse the response, or general error happened !, Exception: " . json_encode($e));
+            return $this->error("Couldn't parse the response, or general error happened !, Exception: " . json_encode($e));
         }
     }
 
