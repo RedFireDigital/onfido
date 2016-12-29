@@ -1,4 +1,7 @@
 # PartFire onfido
+[![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://packagist.org/packages/partfire/onfido)
+[![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow)](https://twitter.com/partfire)
+
 This is a PHP API client for Onfido's REST API.
 
 We have kept this library as close to [the original](https://github.com/onfido/php-onfido) as possible and so can be used as the [documentation](https://onfido.com/documentation#documents) states.
@@ -6,6 +9,8 @@ We have kept this library as close to [the original](https://github.com/onfido/p
 In order to run the tests, you must update the AbstractTest file with your api token.  The tests are poor as they depend upon data on your Onfido account (e.g. customer ids).
 
 These are the original unit tests that Onfido provided.
+
+This branch (partfire) has modifications from the original SDK.  This version returns arrays instead on instances of StdClass or a string.
 
 # Installation
 
