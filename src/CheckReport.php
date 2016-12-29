@@ -15,4 +15,11 @@ namespace Onfido;
 class CheckReport
 {
     public $name, $variant, $options;
+
+    public function get($check_id, $report_id)
+    {
+        $response = (new Request('GET', 'checks/' . $check_id . '/reports/' . $report_id ))->send($this);
+
+        return $response;
+    }
 }
