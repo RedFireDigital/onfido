@@ -11,7 +11,7 @@ class AddressPicker
     public function pick()
     {
         $response = (new Request('GET', 'addresses/pick'))->send($this);
-        return $response->addresses;
+        return $response['addresses'];
     }
 
 }
