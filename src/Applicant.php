@@ -12,6 +12,12 @@ class Applicant
         return $response;
     }
 
+    public function update($applicant_id = null)
+    {
+        $response = (new Request('PUT', 'applicants' . ($applicant_id !== null ? '/' . $applicant_id : '')))->send($this);
+        return $response;
+    }
+
     public function get($applicant_id = null)
     {
         $response = (new Request('GET', 'applicants' . ($applicant_id !== null ? '/' . $applicant_id : '')))->send($this);

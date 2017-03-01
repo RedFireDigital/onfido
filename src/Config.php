@@ -5,7 +5,7 @@ class Config
 {
     public static $instance;
     public $token = '';
-    public $version = '1';
+    public $version = '2';
     public $page = 1;
     public $per_page = 20;
     public $debug;

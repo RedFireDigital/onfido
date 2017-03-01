@@ -32,6 +32,16 @@ class Request
 
         $url_params = '';
 
+        if ($this->method === 'PUT') {
+            curl_setopt($this->curlHandle, CURLOPT_PUT, 1);
+
+            $this->prepare_params($params);
+
+            // var_dump($params);
+            // var_dump(http_build_query($params));
+
+            curl_setopt($this->curlHandle, CURLOPT_POSTFIELDS, $params);
+        }
         if ($this->method === 'POST') {
             // $headers[] = "Content-type: multipart/form-data";
 
