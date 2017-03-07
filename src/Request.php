@@ -47,7 +47,6 @@ class Request
             // $headers[] = "Content-type: multipart/form-data";
 
             curl_setopt($this->curlHandle, CURLOPT_POST, 1);
-            curl_setopt($this->curlHandle, CURLOPT_VERBOSE, 1);
             $this->prepare_params($params);
 
              //var_dump($params);
