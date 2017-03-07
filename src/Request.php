@@ -33,11 +33,12 @@ class Request
         $url_params = '';
 
         if ($this->method === 'PUT') {
-            curl_setopt($this->curlHandle, CURLOPT_PUT, 1);
+            curl_setopt($this->curlHandle, CURLOPT_CUSTOMREQUEST, "PUT");
+            curl_setopt($this->curlHandle, CURLOPT_RETURNTRANSFER, true);
+            //curl_setopt($this->curlHandle, CURLOPT_VERBOSE, 1);
+            curl_setopt($this->curlHandle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
 
             $this->prepare_params($params);
-
-            // var_dump($params);
             // var_dump(http_build_query($params));
 
             curl_setopt($this->curlHandle, CURLOPT_POSTFIELDS, $params);
@@ -46,10 +47,10 @@ class Request
             // $headers[] = "Content-type: multipart/form-data";
 
             curl_setopt($this->curlHandle, CURLOPT_POST, 1);
-
+            curl_setopt($this->curlHandle, CURLOPT_VERBOSE, 1);
             $this->prepare_params($params);
 
-            // var_dump($params);
+             //var_dump($params);
             // var_dump(http_build_query($params));
 
             curl_setopt($this->curlHandle, CURLOPT_POSTFIELDS, $params);
@@ -71,10 +72,10 @@ class Request
         curl_setopt($this->curlHandle, CURLOPT_HTTPHEADER,
             $headers
         );
-
         curl_setopt($this->curlHandle, CURLOPT_URL, $this->url . Config::init()->version . '/' . $this->endpoint . $url_params);
 
         curl_setopt($this->curlHandle, CURLOPT_RETURNTRANSFER, 1);
+
         $response = curl_exec($this->curlHandle);
 
         return $this->processResponse($response);
